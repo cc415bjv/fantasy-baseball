@@ -1,0 +1,21 @@
+= simple_form_for(@statistic) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :player_id
+    = f.input :player_code
+    = f.input :year
+    = f.input :team
+    = f.input :games
+    = f.input :at_bats
+    = f.input :runs
+    = f.input :hits
+    = f.input :doubles
+    = f.input :triples
+    = f.input :homeruns
+    = f.input :rbis
+    = f.input :stolen_bases
+    = f.input :caught_stealing
+
+  .form-actions
+    = f.button :submit

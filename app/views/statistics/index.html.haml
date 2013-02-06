@@ -1,0 +1,45 @@
+%h1 Listing statistics
+
+%table
+  %tr
+    %th Player
+    %th Player code
+    %th Year
+    %th Team
+    %th Games
+    %th At bats
+    %th Runs
+    %th Hits
+    %th Doubles
+    %th Triples
+    %th Homeruns
+    %th Rbis
+    %th Stolen bases
+    %th Caught stealing
+    %th
+    %th
+    %th
+
+  - @statistics.each do |statistic|
+    %tr
+      %td= statistic.player_id
+      %td= statistic.player_code
+      %td= statistic.year
+      %td= statistic.team
+      %td= statistic.games
+      %td= statistic.at_bats
+      %td= statistic.runs
+      %td= statistic.hits
+      %td= statistic.doubles
+      %td= statistic.triples
+      %td= statistic.homeruns
+      %td= statistic.rbis
+      %td= statistic.stolen_bases
+      %td= statistic.caught_stealing
+      %td= link_to 'Show', statistic
+      %td= link_to 'Edit', edit_statistic_path(statistic)
+      %td= link_to 'Destroy', statistic, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Statistic', new_statistic_path

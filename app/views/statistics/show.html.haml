@@ -1,0 +1,48 @@
+%p#notice= notice
+
+%p
+  %b Player:
+  = @statistic.player_id
+%p
+  %b Player code:
+  = @statistic.player_code
+%p
+  %b Year:
+  = @statistic.year
+%p
+  %b Team:
+  = @statistic.team
+%p
+  %b Games:
+  = @statistic.games
+%p
+  %b At bats:
+  = @statistic.at_bats
+%p
+  %b Runs:
+  = @statistic.runs
+%p
+  %b Hits:
+  = @statistic.hits
+%p
+  %b Doubles:
+  = @statistic.doubles
+%p
+  %b Triples:
+  = @statistic.triples
+%p
+  %b Homeruns:
+  = @statistic.homeruns
+%p
+  %b Rbis:
+  = @statistic.rbis
+%p
+  %b Stolen bases:
+  = @statistic.stolen_bases
+%p
+  %b Caught stealing:
+  = @statistic.caught_stealing
+
+= link_to 'Edit', edit_statistic_path(@statistic)
+\|
+= link_to 'Back', statistics_path

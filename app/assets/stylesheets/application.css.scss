@@ -8,9 +8,17 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= dataTables/jquery.dataTables
  *= require_self
  *= require_tree .
 */
+$blue: #4096EE;
+@import "bootstrap-responsive";
+html { background: transparent }
+body { 
+  height: 100%;
+  background-color: $blue;
+}
 
 .content {
   background-color: #eee;

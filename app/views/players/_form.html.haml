@@ -1,0 +1,11 @@
+= simple_form_for(@player) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :player_code
+    = f.input :birth_year
+
+  .form-actions
+    = f.button :submit

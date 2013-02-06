@@ -1,0 +1,55 @@
+.page-header
+  %h1
+    = @player.full_name
+    .pull-right
+      = link_to 'Edit', edit_player_path(@player), :class => :btn
+      = link_to 'Back', players_path, :class => :btn
+%p#notice= notice
+.row-fluid
+  .span12
+    %dl
+      %dt Birth year:
+      %dd= @player.birth_year
+      %dt Past 6 Year Batting Avg:
+      %dd= @player.career_batting_average.to_s.gsub('0.','.')
+.row-fluid
+  .span12
+    %table#stats.table-bordered.table-striped.dataTable
+      %thead
+        %tr
+          %th Year
+          %th Team
+          %th Games
+          %th AB
+          %th R
+          %th H
+          %th 2B
+          %th 3B
+          %th HR
+          %th RBI
+          %th AVG
+          %th SLG
+          %th SB
+          %th CS
+          %th Fantasy Points
+      %tbody
+        - @player.statistics.each do |stat|
+          %tr
+            %td= stat.year
+            %td= stat.team
+            %td= stat.games
+            %td= stat.at_bats
+            %td= stat.runs
+            %td= stat.hits
+            %td= stat.doubles
+            %td= stat.triples
+            %td= stat.homeruns
+            %td= stat.rbis
+            %td= stat.batting_average.to_s.gsub('0.','.')
+            %td= stat.slugging_pct.to_s.gsub('0.','.')
+            %td= stat.stolen_bases
+            %td= stat.caught_stealing
+            %td= stat.fantasy_points
+            
+        
+

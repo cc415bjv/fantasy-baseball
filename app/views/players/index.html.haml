@@ -1,0 +1,17 @@
+.well
+  .page-header
+    %h1
+      Players
+      .pull-right
+        = link_to 'New Player', new_player_path, :class => 'btn'
+
+  .row-fluid
+    .span12
+      %table#roster.table.table-striped.table-condensed.table-bordered.dataTable{:data => {:source => details_players_url(:format => 'json')}}
+        %thead
+          %tr
+            %th Player Name
+            %th Current Team
+            %th Birth Year
+            %th Batting Avg (2007-2012)
+        %tbody
