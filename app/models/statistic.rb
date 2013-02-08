@@ -8,7 +8,7 @@ class Statistic < ActiveRecord::Base
   delegate :name, :first_name, :last_name, to: :player, :prefix => true, :allow_nil => true
 
   scope :team_stats, lambda{|team,year|includes(:team).where('teams.code = ? and statistics.year = ?',team,year)}
-  scope :minimum_at_bats, lambda{|num,start_year,end_year| where("at_bats >= ? and year >= ? and year <= ?",num,start_year,end_year)}
+  scope :minimum_at_bats, lambda{|num,start_year,end_year| where("at_bats >= ? and year in (?)",num,[start_year,end_year])}
 
   def batting_average
     abs = self.at_bats.to_f
