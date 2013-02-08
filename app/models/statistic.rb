@@ -25,7 +25,7 @@ class Statistic < ActiveRecord::Base
   end
 
   def self.most_improved_avg
-    statistics = minimum_at_bats(200,'2009','2010').order('player_id, year desc').group_by(&:player_id)
+    statistics = minimum_at_bats(200,2009,2010).order('player_id, year desc').group_by(&:player_id)
     rankings = []
     statistics.each do |pid,stats|
       if stats.count > 1
@@ -37,7 +37,7 @@ class Statistic < ActiveRecord::Base
   end
 
   def self.most_improved_points
-    statistics = minimum_at_bats(500,'2011','2012').order('player_id, year desc').group_by(&:player_id)
+    statistics = minimum_at_bats(500,2011,2012).order('player_id, year desc').group_by(&:player_id)
     rankings = []
     statistics.each do |pid,stats|
       if stats.count > 1
