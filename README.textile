@@ -2,6 +2,8 @@ h1. Baseball
 
 This application was generated with the "rails_apps_composer":https://github.com/RailsApps/rails_apps_composer gem provided by the "RailsApps Project":http://railsapps.github.com/.
 
+A Demo of this app is available @  http://mlb.herokuapp.com
+
 h2. Diagnostics
 
 This application was built with recipes that are known to work together.
