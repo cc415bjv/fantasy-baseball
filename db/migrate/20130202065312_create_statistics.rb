@@ -1,10 +1,9 @@
 class CreateStatistics < ActiveRecord::Migration
   def change
     create_table :statistics do |t|
-      t.string :player_id
-      t.string :player_code
+      t.integer :player_id
       t.string :year
-      t.string :team
+      t.integer :team_id
       t.integer :games
       t.integer :at_bats
       t.integer :runs

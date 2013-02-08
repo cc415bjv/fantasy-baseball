@@ -1,0 +1,21 @@
+.page-header
+  %h1
+    Major League Baseball Teams
+    .pull-right
+      = link_to 'New Team', new_team_path, :class => :btn
+
+%table#teams.table.table-bordered.table-striped.dataTable
+  %tr
+    %th Name
+    %th Code
+    %th League
+    %th
+
+  - @teams.each do |team|
+    %tr
+      %td= link_to team.name, team
+      %td= team.code
+      %td= team.league
+      %td
+        = link_to 'Edit', edit_team_path(team)
+        = link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' }

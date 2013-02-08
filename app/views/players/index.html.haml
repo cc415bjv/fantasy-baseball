@@ -2,12 +2,10 @@
   .page-header
     %h1
       Players
-      .pull-right
-        = link_to 'New Player', new_player_path, :class => 'btn'
 
   .row-fluid
     .span12
-      %table#roster.table.table-striped.table-condensed.table-bordered.dataTable{:data => {:source => details_players_url(:format => 'json')}}
+      %table#players.table.table-striped.table-bordered.dataTable{:data => {:source => details_players_url(:format => 'json')}}
         %thead
           %tr
             %th Player Name

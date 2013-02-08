@@ -1,2 +1,50 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+.page-header
+  %h1 Fantasy Baseball Demo
+
+.row-fluid
+  .span12
+    %h4 Most Improved Average
+    - player = Player.find(Statistic.most_improved_avg.first[:player_id])
+    %ul
+      %li= link_to player.full_name, player
+
+.row-fluid
+  .span12
+  %h4 2007 Oakland A's
+  %table#team.table.table-bordered.table-striped.dataTable
+    %thead
+      %tr
+        %th Year
+        %th Player
+        %th Games
+        %th AB
+        %th Slugging %
+    %tbody
+      - Statistic.team_stats('OAK',2007).each do |stat|
+        %tr
+          %td= stat.year
+          %td= link_to stat.player.full_name, stat.player
+          %td= stat.games
+          %td= stat.at_bats
+          %td= stat.slugging_pct.to_s.gsub('0.','.')
+
+.row-fluid
+  .span12
+  %h4 Top 5 Most Improved Fantasy Players
+  %ol
+    - Statistic.most_improved_points.take(5).each do |ranking|
+      - player = Player.find(ranking[:player_id])
+      %li= link_to player.full_name, player
+
+%h4 Triple Crown Winners
+.row-fluid
+  .span4
+    %strong American
+    %ol
+      %li= Statistic.tc_winner('American',2012,200)
+      %li= Statistic.tc_winner('American',2011,200)
+  .span4
+    %strong National
+    %ol
+      %li= Statistic.tc_winner('National',2012,200)
+      %li= Statistic.tc_winner('National',2011,200)

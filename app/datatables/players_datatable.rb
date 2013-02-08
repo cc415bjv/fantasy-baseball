@@ -1,5 +1,9 @@
-class PlayersDatatable < BaseDatatable
-  delegate :current_user, :params, :h, :l, :link_to, :edit_player_url, :content_tag, :class, to: :@view
+class PlayersDatatable
+  delegate :params, :h, :l, :link_to, :content_tag, :class, to: :@view
+
+  def initialize(view)
+    @view = view
+  end
 
   def as_json(options = {})
     {
@@ -16,9 +20,9 @@ private
     players.map do |player|
       [
         link_to(player.full_name, player),
-        player.team,
+        player.team_name,
         player.birth_year,
-        player.career_batting_average
+        player.career_batting_average.to_s.gsub('0.','.')
       ]
     end
   end
@@ -28,12 +32,11 @@ private
   end
 
   def fetch_players
-    search_columns = ['players.first_name','players.last_name']
-    #players = current_user.client.players.includes(:organization, :strategy).select('players.name as player, organizations.name as organization, strategies.name as strategy, on_at, off_at').order("#{sort_column} #{sort_direction}").order("on_at")
+    search_columns = ['players.first_name','players.last_name','statistics.team','players.birth_year']
     players = Player.unscoped
     players = players.page(page_count).per(per_page)
     if params[:sSearch].present?
-      players = players.where("players.first_name like :search or players.last_name like :search", search: "%#{params[:sSearch]}%")
+      players = players.joins(:statistics).where("statistics.team like :search or players.birth_year like :search or players.first_name like :search or players.last_name like :search", search: "%#{params[:sSearch]}%").uniq
     end
     players
   end
@@ -47,7 +50,7 @@ private
   end
 
   def sort_column
-    columns = %w[players.full_name players.birth_year]
+    columns = %w[full_name team birth_year career_batting_avg]
     columns[params[:iSortCol_0].to_i]
   end
 

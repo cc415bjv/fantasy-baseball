@@ -1,4 +1,7 @@
 Baseball::Application.routes.draw do
+  resources :teams
+
+
   resources :statistics
 
 

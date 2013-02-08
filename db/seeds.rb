@@ -14,7 +14,7 @@ puts 'DEFAULT USERS'
 #puts 'user: ' << user.name
 
 if true
-  puts "Populating Players..." 
+  puts "Populating Players..."
   Player.destroy_all
   open("#{Rails.root}/db/Master-small.csv") do |players|
     players.read.each_line do |r|
@@ -34,19 +34,21 @@ if true
 end
 
 if true
-  puts "Populating Statistics..." 
+  puts "Populating Statistics..."
   Statistic.destroy_all
+  Team.destroy_all
   pc = nil
   player = nil
   open("#{Rails.root}/db/Batting-07-12.csv") do |stats|
     stats.read.each_line do |r|
-      player_code,year,team,games,ab,runs,hits,doubles,triples,hr,rbi,sb,cs = r.chomp.split(",")
+      player_code,year,team_code,games,ab,runs,hits,doubles,triples,hr,rbi,sb,cs = r.chomp.split(",")
       if player_code != pc
         player = Player.where(player_code: player_code).first
         pc = player_code
       end
+      team = Team.find_or_create_by_code(team_code)
       if player
-        Statistic.create!(player_id: player.id, player_code: player_code, year: year, team: team, games: games,
+        Statistic.create!(player_id: player.id, year: year, team_id: team.id, games: games,
           at_bats: ab, runs: runs, hits: hits, doubles: doubles, triples: triples, homeruns: hr, rbis: rbi, stolen_bases: sb,
           caught_stealing: cs)
         #puts "Adding #{player_code}"
