@@ -46,7 +46,7 @@ if true
         player = Player.where(player_code: player_code).first
         pc = player_code
       end
-      unless team_code == 'teamId'
+      unless team_code == 'teamID'
         team = Team.find_or_create_by_code(team_code)
         if ['ATL','CHN','CIN','COL','LAN','MIA','MIL','NYN','PHI','PIT','ARI','SDN','SLN','SFN','WAS'].include? team.code
           team.league = 'National'
