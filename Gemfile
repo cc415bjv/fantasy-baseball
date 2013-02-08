@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 gem 'rails', '~> 3.2.11'
-gem 'sqlite3'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'execjs'
@@ -9,6 +8,8 @@ group :assets do
   gem 'jquery-datatables-rails', :github => 'rweng/jquery-datatables-rails'
 end
 gem 'jquery-rails'
+gem 'pg', :group => :production
+gem 'sqlite3', :group => [:development, :test]
 gem "thin", ">= 1.5.0", :group => [:development, :test]
 gem "unicorn", ">= 4.3.1", :group => :production
 gem "kaminari", '0.14.1'
