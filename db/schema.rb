@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20130207153346) do
 
   create_table "statistics", :force => true do |t|
     t.integer  "player_id"
-    t.string   "year"
+    t.integer  "year"
     t.integer  "team_id"
     t.integer  "games"
     t.integer  "at_bats"
