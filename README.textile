@@ -46,7 +46,10 @@ h2. Development
 
 h2. Getting Started
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+After clone from github, you will need to run the following steps...
+1. rake db:create
+2. rake db:migrate
+3. rake db:seed
 
 h2. Documentation and Support
 
@@ -54,11 +57,11 @@ This is the only documentation.
 
 h4. Issues
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+DO NOT use ruby-1.9.3-p362!  There are known issues that you will encounter with Kaminari and this build.
 
 h2. Similar Projects
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+This is my app. There are many like it, but this one is mine.
 
 h2. Contributing
 
@@ -73,8 +76,8 @@ If you add functionality to this application, create an alternative implementati
 
 h2. Credits
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+This is a coding exercise assigned to me. I'm not sure if the company wants to be known.
 
 h2. License
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+I'm sure MLB does not like this.  Please don't sue me.
