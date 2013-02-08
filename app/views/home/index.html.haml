@@ -3,7 +3,7 @@
 
 .row-fluid
   .span12
-    %h4 Most Improved Average
+    %h4 2009 - 2010 Most Improved Average
     - player = Player.find(Statistic.most_improved_avg.first[:player_id])
     %ul
       %li= link_to player.full_name, player

@@ -10,8 +10,7 @@ end
 gem 'jquery-rails'
 gem 'pg', :group => :production
 gem 'sqlite3', :group => [:development, :test]
-gem "thin", ">= 1.5.0", :group => [:development, :test]
-gem "unicorn", ">= 4.3.1", :group => :production
+gem "thin", ">= 1.5.0"
 gem "kaminari", '0.14.1'
 gem "decent_exposure"
 gem "haml", ">= 3.1.7"
