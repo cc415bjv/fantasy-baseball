@@ -36,7 +36,7 @@
         - @player.statistics.each do |stat|
           %tr
             %td= stat.year
-            %td= stat.team
+            %td= stat.team.code
             %td= stat.games
             %td= stat.at_bats
             %td= stat.runs

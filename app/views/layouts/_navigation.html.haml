@@ -1,4 +1,6 @@
 = link_to "Baseball", root_path, :class => 'brand'
-= link_to "Players", players_path
-= link_to "Teams", teams_path
+.nav-collapse
+  %ul.nav
+    %li= link_to "Players", players_path
+    %li= link_to "Teams", teams_path
 

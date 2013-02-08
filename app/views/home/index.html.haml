@@ -40,11 +40,19 @@
 .row-fluid
   .span4
     %strong American
-    %ol
-      %li= Statistic.tc_winner('American',2012,200)
-      %li= Statistic.tc_winner('American',2011,200)
+    %ul
+      %li
+        2012 -
+        = Statistic.tc_winner('American',2012,200)
+      %li
+        2011 -
+        = Statistic.tc_winner('American',2011,200)
   .span4
     %strong National
-    %ol
-      %li= Statistic.tc_winner('National',2012,200)
-      %li= Statistic.tc_winner('National',2011,200)
+    %ul
+      %li
+        2012 -
+        = Statistic.tc_winner('National',2012,200)
+      %li
+        2011 -
+        = Statistic.tc_winner('National',2011,200)

@@ -20,7 +20,7 @@ private
     players.map do |player|
       [
         link_to(player.full_name, player),
-        player.team_name,
+        player.statistics.map{|s|s.team.code}.first,
         player.birth_year,
         player.career_batting_average.to_s.gsub('0.','.')
       ]
@@ -36,7 +36,7 @@ private
     players = Player.unscoped
     players = players.page(page_count).per(per_page)
     if params[:sSearch].present?
-      players = players.joins(:statistics).where("statistics.team like :search or players.birth_year like :search or players.first_name like :search or players.last_name like :search", search: "%#{params[:sSearch]}%").uniq
+      players = players.joins(:statistics).where("players.birth_year like :search or players.first_name like :search or players.last_name like :search", search: "%#{params[:sSearch]}%").uniq
     end
     players
   end

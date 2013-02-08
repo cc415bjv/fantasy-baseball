@@ -46,7 +46,15 @@ if true
         player = Player.where(player_code: player_code).first
         pc = player_code
       end
-      team = Team.find_or_create_by_code(team_code)
+      unless team_code == 'teamId'
+        team = Team.find_or_create_by_code(team_code)
+        if ['ATL','CHN','CIN','COL','LAN','MIA','MIL','NYN','PHI','PIT','ARI','SDN','SLN','SFN','WAS'].include? team.code
+          team.league = 'National'
+        else
+          team.league = 'American'
+        end
+        team.save
+      end
       if player
         Statistic.create!(player_id: player.id, year: year, team_id: team.id, games: games,
           at_bats: ab, runs: runs, hits: hits, doubles: doubles, triples: triples, homeruns: hr, rbis: rbi, stolen_bases: sb,
